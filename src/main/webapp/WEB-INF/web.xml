@@ -5,6 +5,7 @@
           http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
   <display-name>Archetype Created Web Application</display-name>
 
+
   <filter>
     <description>请求和应答字符编码过滤器</description>
     <filter-name>enconding-filter</filter-name>
@@ -14,6 +15,15 @@
     <filter-name>enconding-filter</filter-name>
     <servlet-name>spring-mvc</servlet-name>
   </filter-mapping>
+
+  <listener>
+    <description>启动spring容器</description>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:spring-context.xml</param-value>
+  </context-param>
 
   <servlet>
     <description>spring mvc的前端控制器</description>
@@ -29,4 +39,8 @@
     <servlet-name>spring-mvc</servlet-name>
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>login.jsp</welcome-file>
+  </welcome-file-list>
+  
 </web-app>
