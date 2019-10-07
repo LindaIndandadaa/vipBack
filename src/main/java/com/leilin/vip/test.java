@@ -5,9 +5,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class test {
     public static void Query() {
+        Lock lock = new ReentrantLock();
         Connection connection = null;
         try {
             String SDdriver = "com.mysql.jdbc.Driver";

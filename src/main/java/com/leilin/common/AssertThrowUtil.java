@@ -1,6 +1,6 @@
 package com.leilin.common;
 
-/*
+/**
  *所需要的验证
  */
 public class AssertThrowUtil {

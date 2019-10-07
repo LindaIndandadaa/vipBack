@@ -7,5 +7,6 @@ import org.springframework.stereotype.Repository;
 
 public interface UserDao extends AbstractDao<UserEntity> {
     //public UserEntity selectByAccount(@Param("account") String account) throws Exception;
+    UserEntity select(@Param("key") String ukfiled, @Param("value") Object value) throws Exception;
 
 }
