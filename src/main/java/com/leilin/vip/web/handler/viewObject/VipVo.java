@@ -1,4 +1,4 @@
-package com.leilin.vip.web.handler.vo;
+package com.leilin.vip.web.handler.viewObject;
 
 /**
  * 处理页面展示的数据

@@ -1,16 +1,14 @@
-package com.leilin.vip.entity;
+package com.leilin.vip.web.handler.arguementObject;
 
-public class VipEntity {
-
-    private String id;
+public class VipAo {
     /**编号*/
-    private String code;
+    private String phone;
     /**姓名*/
     private String name;
     /**性别*/
-    private int sex;
+    private String sex;
     /**年龄*/
-    private int age;
+    private String age;
     /**QQ*/
     private String qq;
     /**email*/
@@ -21,25 +19,13 @@ public class VipEntity {
     private String address;
     /**备注*/
     private String remark;
-    /**vip等级*/
-    private int rank;
-    /**当前消费金额*/
-    private int amount;
 
-    public String getId() {
-        return id;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getName() {
@@ -50,19 +36,19 @@ public class VipEntity {
         this.name = name;
     }
 
-    public int getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(int sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
@@ -104,21 +90,5 @@ public class VipEntity {
 
     public void setRemark(String remark) {
         this.remark = remark;
-    }
-
-    public int getRank() {
-        return rank;
-    }
-
-    public void setRank(int rank) {
-        this.rank = rank;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
     }
 }

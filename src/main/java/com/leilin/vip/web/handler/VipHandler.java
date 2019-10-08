@@ -4,15 +4,18 @@ import com.leilin.common.ThisSystemException;
 import com.leilin.vip.entity.VipEntity;
 import com.leilin.vip.entity.VipRankEntity;
 import com.leilin.vip.function.VipFunction;
-import com.leilin.vip.web.handler.vo.VipVo;
+import com.leilin.vip.web.handler.arguementObject.VipAo;
+import com.leilin.vip.web.handler.viewObject.VipVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
 
+/**
+ * 处理index界面的请求
+ */
 @Controller
 public class VipHandler extends AbstractHandler {
 
@@ -38,7 +41,7 @@ public class VipHandler extends AbstractHandler {
             VipRankEntity rank = this.getRank(req, vip.getRank());
             vo.setRank(rank.getName());
 
-            vo.setSex(vip.getSex().equals("1")?"男":"女");
+            vo.setSex(vip.getSex()==1?"男":"女");
             vo.setZip(vip.getZip());
             vo.setRemark(vip.getRemark());
 
@@ -49,5 +52,30 @@ public class VipHandler extends AbstractHandler {
         return "vip/qry";
     }
 
+    @RequestMapping(path="/vip/add.do", method = RequestMethod.GET)
+    public String addView() throws Exception{
+        return "vip/add";
+    }
+    @RequestMapping(path="/vip/add.do", method = RequestMethod.POST)
+    public String addVip(VipAo ao, HttpServletRequest req) throws Exception{
+        try{
+            //1 ao传给业务层执行
+            VipEntity ve = fun.addVip(ao);
+            //2 页面跳转
+            req.setAttribute("message", "录入成功！");
+            return "vip/add";
+            //TODO:后期跳转到消费录入界面
+        }catch (ThisSystemException e) {
+            req.setAttribute("message", e.getMessage());
+        }
+
+        return "vip/add";
+    }
+
+    //访问welcome界面
+    @RequestMapping("/welcome.do")
+    public String welcome() {
+        return "welcome";
+    }
 
 }

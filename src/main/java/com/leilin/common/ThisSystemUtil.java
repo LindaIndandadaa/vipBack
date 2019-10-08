@@ -1,6 +1,7 @@
 package com.leilin.common;
 
 import java.security.MessageDigest;
+import java.util.UUID;
 
 /**
  * 系统的工具类
@@ -49,7 +50,19 @@ public class ThisSystemUtil {
             return hexDigIts[d1] + hexDigIts[d2];
         }
 
-    public static void main(String args[]) {
-        System.out.println( md5("12"));
-    }
+        public static String uuid(){
+            char[] cs = new char[32];
+            String uuid = UUID.randomUUID().toString();
+            char c=0;
+            int j=0;
+            for(int i=0; i<uuid.length();i++) {
+                if((c=uuid.charAt(i))!='-')
+                    cs[j++]=c;
+            }
+            return new String(cs);
+        }
+        public static void main(String[] args) {
+            for(int i=0; i<10;i++)
+                System.out.println(uuid());
+        }
 }

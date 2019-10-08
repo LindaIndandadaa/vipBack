@@ -1,5 +1,8 @@
 package com.leilin.common;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  *所需要的验证
  */
@@ -43,4 +46,44 @@ public class AssertThrowUtil {
             throw new ThisSystemException(message);
         }
     }
+
+    /**
+     * 判断true or false
+     * @param message
+     * @param b
+     */
+    public static void assertTrue(String message, boolean b) {
+        if(!b)
+            throw new ThisSystemException(message);
+    }
+    public static void assertFalse(String message, boolean b) {
+        if(b)
+            throw new ThisSystemException(message);
+    }
+
+    /**
+     * 验证是否符合正则表达式
+     * @param message
+     * @param reg
+     * @param target
+     */
+    public static void assertPatternMatch(String message, String reg, String target){
+
+        Pattern pattern = Pattern.compile(reg);//11位数字
+        Matcher ma = pattern.matcher(target);
+        if(!ma.matches()) {
+            throw new ThisSystemException(message);
+        }
+    }
+
+
+    public static int parstInt(String target, int defaultValue) {
+        try {
+            return Integer.parseInt(target.trim());
+        }catch (Exception e) {
+            return defaultValue;
+        }
+    }
+
+
 }

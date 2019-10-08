@@ -4,10 +4,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.leilin.vip.dao.VipDAO">
-    <insert id="insert">
+    <insert id="insert" >
         insert into vip_detail(id, code, name, age, sex,qq,email,address,zip,remark,rank,amount)
         values (#{id}, #{code}, #{name}, #{age}, #{sex}, #{qq}, #{email}, #{address}, #{zip}, #{remark}, #{rank}, #{amount})
     </insert>
+    
+    <select id="exist" resultType="java.lang.Boolean">
+        select count(1) > 0 from vip_detail where ${key}=#{value}
+    </select>
 
     <update id="update">
         update vip_detail set

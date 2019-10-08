@@ -12,7 +12,7 @@
 %>
 <html>
 <head>
-    <base href="<%=contextPath%>/">
+    <base href="<%=request.getContextPath()%>/">
     <title>Vip客户查询</title>
 </head>
 <body>
